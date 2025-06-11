@@ -1,4 +1,4 @@
-class ggai < Formula
+class Ggai < Formula
   include Language::Python::Virtualenv
 
   desc "Helper for GeoGuessr training using OpenAI"
