@@ -1,0 +1,25 @@
+[project]
+name = "ggai"
+version = "0.1.1"
+description = "Helper for GeoGuessr training using OpenAI"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = { file = "LICENSE" }
+authors = [
+    { name = "Rio Fujita", email = "rifujita@microsoft.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.86.0",
+    "pyobjc>=11.0",
+]
+
+[project.scripts]
+ggai = "ggai.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.urls]
+Homepage = "https://github.com/rioriost/homebrew-ggai"
+Issues = "https://github.com/rioriost/homebrew-ggai/issues"
