@@ -49,9 +49,9 @@ options:
 
 Create a quickaction with Automator.
 
-![Automator](images/automator-01.png)
-![Automator](images/automator-02.png)
-![Automator](images/automator-03.png)
+![Automator](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/automator-01.png)
+![Automator](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/automator-02.png)
+![Automator](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/automator-03.png)
 
 And, put a script with API key for OpenAI.
 
@@ -65,9 +65,9 @@ EOD
 
 After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
-![Automator](images/automator-04.png)
+![Automator](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/automator-04.png)
 
-![Sample](images/ggai.mov)
+![Sample](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/ggai.mov)
 
 ## Release Notes
 
