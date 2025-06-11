@@ -10,6 +10,7 @@ Helper for GeoGuessr training using OpenAI
 - [Prerequisites](#prerequisites)
 - [Install](#install)
 - [Usage](#usage)
+- [Setup](#setup)
 - [Release Notes](#release-notes)
 - [License](#license)
 
@@ -43,6 +44,30 @@ options:
   -f FILENAME, --filename FILENAME
                         Filename for screencapture
 ```
+
+## Setup
+
+Create a quickaction with Automator.
+
+![Automator](images/automator-01.png)
+![Automator](images/automator-02.png)
+![Automator](images/automator-03.png)
+
+And, put a script with API key for OpenAI.
+
+```bash
+result=$(/opt/homebrew/bin/ggai -k "sk-proj-......")
+
+osascript <<EOD
+display dialog "$(echo "$result" | sed 's/"/\\"/g')" buttons {"OK"} default button 1
+EOD
+```
+
+After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
+
+![Automator](images/automator-04.png)
+
+![Sample](images/ggai.mov)
 
 ## Release Notes
 
