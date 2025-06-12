@@ -1,6 +1,6 @@
 [project]
 name = "ggai"
-version = "0.1.6"
+version = "0.2.0"
 description = "Helper for GeoGuessr training using OpenAI"
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { file = "LICENSE" }

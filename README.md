@@ -71,6 +71,9 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ## Release Notes
 
+### 0.2.0 Release
+- Added a feature to write a file of guess
+
 ### 0.1.6 Release
 - Improved prompt
 

@@ -54,6 +54,13 @@ def parse_arguments() -> argparse.Namespace:
         default=f"ggai-{timestamp}.png",
         help="Filename for screencapture",
     )
+    parser.add_argument(
+        "-d",
+        "--description",
+        type=str,
+        default=f"ggai-{timestamp}.txt",
+        help="Description for screencapture",
+    )
 
     return parser.parse_args()
 
@@ -169,6 +176,9 @@ async def async_main():
     )
 
     print(response.output_text)
+    desc_path = os.path.join(os.path.expanduser("~"), "Desktop", args.description)
+    with open(desc_path, "w") as f:
+        f.write(response.output_text)
 
 
 def main():
