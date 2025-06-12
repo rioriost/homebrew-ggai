@@ -149,25 +149,11 @@ async def async_main():
                         "type": "input_text",
                         "text": (
                             "あなたはGeoGuessrのトッププレイヤーです。"
-                            "高度な観察眼で、与えられた風景写真からどの国かを特定し、"
-                            "その根拠を明確かつ詳細に説明してください。"
-                            "国・地域別のGoogle Carの特徴（Car Meta）も根拠として利用してください。"
-                            "回答は以下の107の国・地域のみから選んでください。"
+                            "高度な観察眼で、与えられた風景写真から以下の107の国・地域のいずれであるかを特定してください。"
                             "Andorra, Austria, Belgium, France, Germany, Greece, Ireland, Isle of Man, Italy, Luxembourg, Malta, Monaco, Netherlands, Portugal, Spain, Switzerland, United Kingdom, Albania, Bulgaria, Croatia, Czech Republic, Hungary, Montenegro, North Macedonia, Poland, Romania, Russia, Serbia, Slovakia, Slovenia, Ukraine, Denmark, Faroe Islands, Finland, Greenland, Iceland, Norway, Sweden, Estonia, Latvia, Lithuania, Argentina, Bolivia, Brazil, Chile, Colombia, Costa Rica, Curaçao, Dominican Republic, Ecuador, Guatemala, Mexico, Panama, Peru, Puerto Rico, Uruguay, U.S. Virgin Islands, Bermuda, Canada, United States of America, Bangladesh, Bhutan, Cambodia, Christmas Island, India, Indonesia, Laos, Malaysia, Pakistan, Philippines, Singapore, Sri Lanka, Thailand, Vietnam, China, Hong Kong, Japan, Kazakhstan, Kyrgyzstan, Mongolia, South Korea, Taiwan, American Samoa, Australia, Guam, New Zealand, Northern Mariana Islands, U.S. Minor Outlying Islands, Botswana, Eswatini, Ghana, Kenya, Lesotho, Madagascar, Nigeria, Réunion, Rwanda, Senegal, South Africa, Uganda, Israel, Jordan, Palestine, Qatar, Tunisia, Turkey, United Arab Emirates"
-                            "以下の国・地域同士は非常に似ています。これらの国・地域では、より慎重に検討してください。"
-                            "Finland and Sweden"
-                            "Lithuania, Latvia, and Estonia"
-                            "Germany, Czech Republic, Spain, France, Switzerland, Austria, and Andorra"
-                            "Hungary and Croatia"
-                            "Serbia, Slovakia, and Romania"
-                            "Albania, Montenegro, North Macedonia, and Greece"
-                            "Russia, Ukraine, Kazakhstan and Kyrgyzstan"
-                            "Israel and Lebanon"
-                            "Cambodia, Laos, Thailand, Malaysia, Indonesia, and Philippines"
-                            "Mexico and Peru"
-                            "Nigeria, Uganda, Senegal, and Ghana"
-                            "Bulgariaが最も出題頻度が高く、Mongoliaが最も頻度が低いこと分かっており、以下の順番に頻度が偏っています。"
-                            "Bulgaria, Austria, Spain, Lithuania, Romania, Thailand, New Zealand, Denmark, France, Sweden, Russia, Italy, Finland, Singapore, Poland, Brazil, Australia, United Kingdom, Argentina, Hungary, Canada, Norway, Mexico, Germany, United States, Japan, Netherlands, South Korea, South Africa, Montenegro, Slovenia, Ireland, Czech Republic, Peru, Israel, Chile, Botswana, Ecuador, Croatia, Philippines, Greece, Belgium, Portugal, Malaysia, Ukraine, Switzerland, Slovakia, Ghana, Estonia, Colombia, Turkey, Serbia, Latvia, Iceland, Dominican Republic, Uganda, Malta, Kenya, United Arab Emirates, Tunisia, Costa Rica, Bolivia, Bhutan, Sri Lanka, San Marino, Kyrgyzstan, China, Uruguay, Madagascar, Luxembourg, Indonesia, India, Bangladesh, Nigeria, Lesotho, Guatemala, Andorra, Senegal, North Macedonia, Cambodia, Albania, Mongolia"
+                            "特定した根拠を明確かつ詳細に説明してください。"
+                            "国・地域別のGoogle Carの特徴（Car Meta）も根拠として利用してください。"
+                            "これらの国・地域以外は無効な回答なので、検討を最初からやり直してください。"
                         ),
                     }
                 ],
