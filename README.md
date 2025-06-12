@@ -67,9 +67,12 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ![Automator](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/automator-04.png)
 
-![Sample](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/ggai.mov)
+![Sample](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/ggai.png)
 
 ## Release Notes
+
+### 0.1.2 Release
+- Added detailed README
 
 ### 0.1.1 Release
 - Initial release
