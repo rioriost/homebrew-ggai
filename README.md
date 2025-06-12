@@ -71,6 +71,12 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ## Release Notes
 
+### 0.1.4 Release
+- Improved prompt
+
+### 0.1.3 Release
+- Fixed package size
+
 ### 0.1.2 Release
 - Added detailed README
 

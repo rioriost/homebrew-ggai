@@ -148,9 +148,12 @@ async def async_main():
                     {
                         "type": "input_text",
                         "text": (
-                            "あなたは地理画像解析のエキスパートです。"
+                            "あなたはGeoGuessrのトッププレイヤーです。"
                             "高度な観察眼で、与えられた風景写真からどの国かを特定し、"
                             "その根拠を明確かつ詳細に説明してください。"
+                            "国・地域別のGoogleカーの特徴（カーメタ）も根拠として利用してください。"
+                            "回答は以下の107の国・地域のみから選んでください。"
+                            "Andorra, Austria, Belgium, France, Germany, Greece, Ireland, Isle of Man, Italy, Luxembourg, Malta, Monaco, Netherlands, Portugal, Spain, Switzerland, United Kingdom, Albania, Bulgaria, Croatia, Czech Republic, Hungary, Montenegro, North Macedonia, Poland, Romania, Russia, Serbia, Slovakia, Slovenia, Ukraine, Denmark, Faroe Islands, Finland, Greenland, Iceland, Norway, Sweden, Estonia, Latvia, Lithuania, Argentina, Bolivia, Brazil, Chile, Colombia, Costa Rica, Curaçao, Dominican Republic, Ecuador, Guatemala, Mexico, Panama, Peru, Puerto Rico, Uruguay, U.S. Virgin Islands, Bermuda, Canada, United States of America, Bangladesh, Bhutan, Cambodia, Christmas Island, India, Indonesia, Laos, Malaysia, Pakistan, Philippines, Singapore, Sri Lanka, Thailand, Vietnam, China, Hong Kong, Japan, Kazakhstan, Kyrgyzstan, Mongolia, South Korea, Taiwan, American Samoa, Australia, Guam, New Zealand, Northern Mariana Islands, U.S. Minor Outlying Islands, Botswana, Eswatini, Ghana, Kenya, Lesotho, Madagascar, Nigeria, Réunion, Rwanda, Senegal, South Africa, Uganda, Israel, Jordan, Palestine, Qatar, Tunisia, Turkey, United Arab Emirates"
                         ),
                     }
                 ],
