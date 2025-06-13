@@ -10,6 +10,7 @@ import os
 import subprocess
 import sys
 
+from PIL import Image, ImageDraw, ImageFont
 from openai import AsyncOpenAI
 
 from AppKit import NSWorkspace
@@ -60,6 +61,13 @@ def parse_arguments() -> argparse.Namespace:
         type=str,
         default=f"ggai-{timestamp}.txt",
         help="Description for screencapture",
+    )
+    parser.add_argument(
+        "-e",
+        "--embedding",
+        type=bool,
+        default=True,
+        help="Embedding Description to captured image",
     )
 
     return parser.parse_args()
@@ -175,10 +183,57 @@ async def async_main():
         ],
     )
 
-    print(response.output_text)
-    desc_path = os.path.join(os.path.expanduser("~"), "Desktop", args.description)
-    with open(desc_path, "w") as f:
-        f.write(response.output_text)
+    if args.embedding:
+        img = Image.open(file_path).convert("RGBA")
+        draw = ImageDraw.Draw(img)
+        overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+        overlay_draw = ImageDraw.Draw(overlay)
+
+        try:
+            font = ImageFont.truetype("/Library/Fonts/ヒラギノ角ゴシック W3.ttc", 16)
+        except IOError:
+            font = ImageFont.load_default()
+
+        text = response.output_text
+        margin = 20
+        max_width = img.width - 2 * margin
+        lines = []
+        for paragraph in text.split("\n"):
+            words = paragraph.split(" ")
+            line = ""
+            for w in words:
+                test = f"{line} {w}".strip()
+                # textbbox で幅を取得
+                bbox = draw.textbbox((0, 0), test, font=font)
+                w_px = bbox[2] - bbox[0]
+                if w_px <= max_width:
+                    line = test
+                else:
+                    lines.append(line)
+                    line = w
+            lines.append(line)
+
+        _, _, _, h = draw.textbbox((0, 0), "Ay", font=font)
+        line_height = h + 4
+        total_height = line_height * len(lines)
+        y = img.height - total_height - margin
+
+        bg_height = total_height + margin
+        rectangle = (0, img.height - bg_height, img.width, img.height)
+        overlay_draw.rectangle(rectangle, fill=(63, 63, 63, 127))
+
+        for line in lines:
+            overlay_draw.text((margin, y), line, font=font, fill=(255, 255, 255, 255))
+            y += line_height
+
+        img = Image.alpha_composite(img, overlay)
+        img.convert("RGB").save(file_path)
+        print(f"Embedded text into image: {file_path}")
+    else:
+        print(response.output_text)
+        desc_path = os.path.join(os.path.expanduser("~"), "Desktop", args.description)
+        with open(desc_path, "w") as f:
+            f.write(response.output_text)
 
 
 def main():
