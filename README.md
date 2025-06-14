@@ -32,7 +32,7 @@ brew install ggai
 
 ```bash
 ggai --help
-usage: ggai [-h] [-k KEY] [-m MODEL] [-f FILENAME]
+usage: ggai [-h] [-k KEY] [-m MODEL] [-f FILENAME] [-d DESCRIPTION] [-e EMBEDDING]
 
 ggai
 
@@ -43,6 +43,10 @@ options:
                         OpenAI Model to use, default: gpt-4o
   -f FILENAME, --filename FILENAME
                         Filename for screencapture
+  -d DESCRIPTION, --description DESCRIPTION
+                        Description for screencapture
+  -e EMBEDDING, --embedding EMBEDDING
+                        Embedding Description to captured image
 ```
 
 ## Setup
@@ -70,6 +74,12 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 ![Sample](https://raw.githubusercontent.com/rioriost/homebrew-ggai/refs/heads/main/images/ggai.png)
 
 ## Release Notes
+
+### 0.2.2 Release
+- Improved prompt
+
+### 0.2.1 Release
+- Added text embedding
 
 ### 0.2.0 Release
 - Added a feature to write a file of guess
