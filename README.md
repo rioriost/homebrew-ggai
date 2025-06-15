@@ -73,6 +73,12 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ## Release Notes
 
+### 0.4.0 Release
+- Refactored
+
+### 0.3.2 Release
+- Show guessing duration
+
 ### 0.3.1 Release
 - Improved prompt
 
