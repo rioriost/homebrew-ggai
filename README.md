@@ -73,6 +73,9 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ## Release Notes
 
+### 0.3.1 Release
+- Improved prompt
+
 ### 0.3.0 Release
 - Added directory argument
 
