@@ -32,14 +32,22 @@ def parse_arguments() -> argparse.Namespace:
         argparse.Namespace: Parsed arguments.
     """
     DEFAULT_MODEL = "gpt-4o"
+    DEFAULT_LANG = "Japanese"
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     parser = argparse.ArgumentParser(description="ggai")
     parser.add_argument(
         "-k",
         "--key",
         type=str,
-        default="",
+        default=os.environ.get("OPENAI_API_KEY", ""),
         help="OpenAI API key",
+    )
+    parser.add_argument(
+        "-l",
+        "--language",
+        type=str,
+        default=DEFAULT_LANG,
+        help=f"Language to be embedded, default: {DEFAULT_LANG}",
     )
     parser.add_argument(
         "-m",
@@ -57,17 +65,10 @@ def parse_arguments() -> argparse.Namespace:
     )
     parser.add_argument(
         "-d",
-        "--description",
+        "--directory",
         type=str,
-        default=f"ggai-{timestamp}.txt",
-        help="Description for screencapture",
-    )
-    parser.add_argument(
-        "-e",
-        "--embedding",
-        type=bool,
-        default=True,
-        help="Embedding Description to captured image",
+        default=os.path.join(os.path.expanduser("~"), "Desktop"),
+        help="Directory to save screencapture",
     )
 
     return parser.parse_args()
@@ -132,12 +133,12 @@ async def async_main():
     Main asynchronous entry point: Initialize the application and run the main loop.
     """
     args = parse_arguments()
-    file_path = os.path.join(os.path.expanduser("~"), "Desktop", args.filename)
+    file_path = os.path.join(args.directory, args.filename)
     capture_front_window(file_path)
     image_b64 = encode_image_to_b64(file_path)
 
-    prompt = """
-    以下のフォーマットで回答してください。()内は根拠のカテゴリーです。ただし、写真に写っていない根拠は省いて構いません。
+    prompt = f"""
+    {args.language}で以下のフォーマットで回答してください。()内は根拠のカテゴリーです。写真内にその要素が無い場合は、「〜は写っていない。」あるいは「判別出来ない。」と明記してください。例「1.(言語):写っていない。」「5.(道路の左右通行):判別出来ない」
 
     1) 結論：<国名>
     2) 根拠：
@@ -172,6 +173,7 @@ async def async_main():
                             "特定した根拠を明確かつ詳細に説明してください。"
                             "「ヨーロッパ的な特徴を持つ標識」といったあいまいな説明ではなく、例えば「スペインでしか見られない横断歩道標識」といった特定に繋がる知識を重視してください。"
                             "国・地域別のGoogle Carの特徴（Car Meta）も根拠として利用し、具体的にその特徴を挙げてください。"
+                            "道路のラインの判別は注意深く行ってください。側線と中央線を間違えないようにしてください。"
                         ),
                     }
                 ],
@@ -186,57 +188,51 @@ async def async_main():
         ],
     )
 
-    if args.embedding:
-        img = Image.open(file_path).convert("RGBA")
-        draw = ImageDraw.Draw(img)
-        overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        overlay_draw = ImageDraw.Draw(overlay)
+    img = Image.open(file_path).convert("RGBA")
+    draw = ImageDraw.Draw(img)
+    overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    overlay_draw = ImageDraw.Draw(overlay)
 
-        try:
-            font = ImageFont.truetype("/Library/Fonts/ヒラギノ角ゴシック W3.ttc", 16)
-        except IOError:
-            font = ImageFont.load_default()
+    try:
+        font = ImageFont.truetype("/Library/Fonts/ヒラギノ角ゴシック W3.ttc", 16)
+    except IOError:
+        font = ImageFont.load_default()
 
-        text = response.output_text
-        margin = 20
-        max_width = img.width - 2 * margin
-        lines = []
-        for paragraph in text.split("\n"):
-            words = paragraph.split(" ")
-            line = ""
-            for w in words:
-                test = f"{line} {w}".strip()
-                # textbbox で幅を取得
-                bbox = draw.textbbox((0, 0), test, font=font)
-                w_px = bbox[2] - bbox[0]
-                if w_px <= max_width:
-                    line = test
-                else:
-                    lines.append(line)
-                    line = w
-            lines.append(line)
+    text = response.output_text
+    margin = 20
+    max_width = img.width - 2 * margin
+    lines = []
+    for paragraph in text.split("\n"):
+        words = paragraph.split(" ")
+        line = ""
+        for w in words:
+            test = f"{line} {w}".strip()
+            # textbbox で幅を取得
+            bbox = draw.textbbox((0, 0), test, font=font)
+            w_px = bbox[2] - bbox[0]
+            if w_px <= max_width:
+                line = test
+            else:
+                lines.append(line)
+                line = w
+        lines.append(line)
 
-        _, _, _, h = draw.textbbox((0, 0), "Ay", font=font)
-        line_height = h + 4
-        total_height = line_height * len(lines)
-        y = img.height - total_height - margin
+    _, _, _, h = draw.textbbox((0, 0), "Ay", font=font)
+    line_height = h + 4
+    total_height = line_height * len(lines)
+    y = img.height - total_height - margin
 
-        bg_height = total_height + margin
-        rectangle = (0, img.height - bg_height, img.width, img.height)
-        overlay_draw.rectangle(rectangle, fill=(63, 63, 63, 127))
+    bg_height = total_height + margin
+    rectangle = (0, img.height - bg_height, img.width, img.height)
+    overlay_draw.rectangle(rectangle, fill=(63, 63, 63, 127))
 
-        for line in lines:
-            overlay_draw.text((margin, y), line, font=font, fill=(255, 255, 255, 255))
-            y += line_height
+    for line in lines:
+        overlay_draw.text((margin, y), line, font=font, fill=(255, 255, 255, 255))
+        y += line_height
 
-        img = Image.alpha_composite(img, overlay)
-        img.convert("RGB").save(file_path)
-        print(f"Embedded text into image: {file_path}")
-    else:
-        print(response.output_text)
-        desc_path = os.path.join(os.path.expanduser("~"), "Desktop", args.description)
-        with open(desc_path, "w") as f:
-            f.write(response.output_text)
+    img = Image.alpha_composite(img, overlay)
+    img.convert("RGB").save(file_path)
+    print(f"Embedded text into image: {file_path}")
 
 
 def main():

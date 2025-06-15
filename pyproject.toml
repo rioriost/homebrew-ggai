@@ -1,6 +1,6 @@
 [project]
 name = "ggai"
-version = "0.2.2"
+version = "0.3.0"
 description = "Helper for GeoGuessr training using OpenAI"
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { file = "LICENSE" }
@@ -11,7 +11,7 @@ requires-python = ">=3.10"
 dependencies = [
     "openai>=1.86.0",
     "pillow>=11.2.1",
-    "pyobjc>=11.0",
+    "pyobjc>=11.1",
 ]
 
 [project.scripts]
