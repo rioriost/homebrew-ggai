@@ -144,7 +144,8 @@ def call_openai(api_key: str, model: str, prompt: str, image_b64: str) -> str:
                     "特定した根拠を明確かつ詳細に説明してください。"
                     "「ヨーロッパ的な特徴を持つ標識」といったあいまいな説明ではなく、例えば「スペインでしか見られない横断歩道標識」といった特定に繋がる知識を重視してください。"
                     "国・地域別のGoogle Carの特徴（Car Meta）も根拠として利用し、具体的にその特徴を挙げてください。"
-                    "道路のラインの判別は注意深く行ってください。側線と中央線を間違えないようにしてください。",
+                    "道路のラインの判別は注意深く行ってください。側線と中央線を間違えないようにしてください。"
+                    "人物を特定するリクエストではありません。",
                 },
                 {
                     "role": "user",
@@ -214,6 +215,7 @@ def draw_overlay_text(img_path: str, text: str) -> None:
 
 
 def main():
+    RETRY_MAX = 5
     args = parse_arguments()
 
     if not args.key:
@@ -227,7 +229,12 @@ def main():
     image_b64 = encode_image_to_b64(file_path)
 
     start_time = datetime.now()
-    result_text = call_openai(args.key, args.model, prompt, image_b64)
+    retry_cnt = 1
+    while retry_cnt < RETRY_MAX:
+        result_text = call_openai(args.key, args.model, prompt, image_b64)
+        if "I'm unable" not in result_text and "I'm sorry" not in result_text:
+            break
+        retry_cnt += 1
     draw_overlay_text(file_path, result_text)
     duration = datetime.now() - start_time
 
