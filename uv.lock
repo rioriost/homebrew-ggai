@@ -28,11 +28,11 @@ wheels = [
 
 [[package]]
 name = "certifi"
-version = "2025.7.9"
+version = "2025.7.14"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/de/8a/c729b6b60c66a38f590c4e774decc4b2ec7b0576be8f1aa984a53ffa812a/certifi-2025.7.9.tar.gz", hash = "sha256:c1d2ec05395148ee10cf672ffc28cd37ea0ab0d99f9cc74c43e588cbd111b079", size = 160386 }
+sdist = { url = "https://files.pythonhosted.org/packages/b3/76/52c535bcebe74590f296d6c77c86dabf761c41980e1347a2422e4aa2ae41/certifi-2025.7.14.tar.gz", hash = "sha256:8ea99dbdfaaf2ba2f9bac77b9249ef62ec5218e7c2b2e903378ed5fccf765995", size = 163981 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/66/f3/80a3f974c8b535d394ff960a11ac20368e06b736da395b551a49ce950cce/certifi-2025.7.9-py3-none-any.whl", hash = "sha256:d842783a14f8fdd646895ac26f719a061408834473cfc10203f6a575beb15d39", size = 159230 },
+    { url = "https://files.pythonhosted.org/packages/4f/52/34c6cf5bb9285074dc3531c437b3919e825d976fde097a7a73f79e726d03/certifi-2025.7.14-py3-none-any.whl", hash = "sha256:6b31f564a415d79ee77df69d757bb49a5bb53bd9f756cbbe24394ffd6fc1f4b2", size = 162722 },
 ]
 
 [[package]]
@@ -67,7 +67,7 @@ wheels = [
 
 [[package]]
 name = "ggai"
-version = "0.4.5"
+version = "0.4.6"
 source = { editable = "." }
 dependencies = [
     { name = "openai" },
@@ -77,7 +77,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "openai", specifier = ">=1.95.0" },
+    { name = "openai", specifier = ">=1.97.1" },
     { name = "pillow", specifier = ">=11.3.0" },
     { name = "pyobjc", specifier = ">=11.1" },
 ]
@@ -202,7 +202,7 @@ wheels = [
 
 [[package]]
 name = "openai"
-version = "1.95.0"
+version = "1.97.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -214,9 +214,9 @@ dependencies = [
     { name = "tqdm" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ef/2f/0c6f509a1585545962bfa6e201d7fb658eb2a6f52fb8c26765632d91706c/openai-1.95.0.tar.gz", hash = "sha256:54bc42df9f7142312647dd485d34cca5df20af825fa64a30ca55164be2cf4cc9", size = 488144 }
+sdist = { url = "https://files.pythonhosted.org/packages/a6/57/1c471f6b3efb879d26686d31582997615e969f3bb4458111c9705e56332e/openai-1.97.1.tar.gz", hash = "sha256:a744b27ae624e3d4135225da9b1c89c107a2a7e5bc4c93e5b7b5214772ce7a4e", size = 494267 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/19/a5/57d0bb58b938a3e3f352ff26e645da1660436402a6ad1b29780d261cc5a5/openai-1.95.0-py3-none-any.whl", hash = "sha256:a7afc9dca7e7d616371842af8ea6dbfbcb739a85d183f5f664ab1cc311b9ef18", size = 755572 },
+    { url = "https://files.pythonhosted.org/packages/ee/35/412a0e9c3f0d37c94ed764b8ac7adae2d834dbd20e69f6aca582118e0f55/openai-1.97.1-py3-none-any.whl", hash = "sha256:4e96bbdf672ec3d44968c9ea39d2c375891db1acc1794668d8149d5fa6000606", size = 764380 },
 ]
 
 [[package]]
