@@ -24,7 +24,7 @@ log = logging.getLogger(__name__)
 
 
 def parse_arguments() -> argparse.Namespace:
-    DEFAULT_MODEL = "gpt-4o"
+    DEFAULT_MODEL = "gpt-5"
     DEFAULT_LANG = "Japanese"
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
 
