@@ -73,6 +73,9 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ## Release Notes
 
+### 0.4.9 Release
+- Dependency Update
+
 ### 0.4.8 Release
 - Changed the default model to GPT-5, it takes much longer to guess than gpt-4o
 
