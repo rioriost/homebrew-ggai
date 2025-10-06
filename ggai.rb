@@ -3,8 +3,8 @@ class Ggai < Formula
 
   desc "Helper for GeoGuessr training using OpenAI"
   homepage "https://github.com/rioriost/homebrew-ggai/"
-  url "https://files.pythonhosted.org/packages/93/a0/211f4aaea40703f05f216bcbdb40f0ec7e0d44cf46daf246d7e640ed5f02/ggai-0.4.10.tar.gz"
-  sha256 "b0e39685d688f05c2710edc71c0abd316d135756dfa6d4a61b30939b91e71762"
+  url "https://files.pythonhosted.org/packages/03/fa/c951347070488f1405ed556dfed142c38b7e88c65d14df4436795c30ac98/ggai-0.4.13.tar.gz"
+  sha256 "e490d55f012eb3af989ce101cea0be5432837666979439482434e462c2e90a57"
   license "MIT"
 
   depends_on "python@3.10"
