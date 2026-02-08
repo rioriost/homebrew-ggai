@@ -10,12 +10,12 @@ import sys
 from datetime import datetime
 
 import openai
-from PIL import Image, ImageDraw, ImageFont
 from AppKit import NSWorkspace
+from PIL import Image, ImageDraw, ImageFont
 from Quartz import (
     CGWindowListCopyWindowInfo,
-    kCGWindowListOptionOnScreenOnly,
     kCGNullWindowID,
+    kCGWindowListOptionOnScreenOnly,
 )
 
 # Logging setup

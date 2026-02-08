@@ -1,15 +1,15 @@
 [project]
 name = "ggai"
-version = "0.4.26"
+version = "0.4.27"
 description = "Helper for GeoGuessr training using OpenAI"
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { file = "LICENSE" }
 authors = [
     { name = "Rio Fujita", email = "rifujita@microsoft.com" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.13"
 dependencies = [
-    "openai>=2.16.0",
+    "openai>=2.17.0",
     "pillow>=12.1.0",
     "pyobjc>=12.1",
 ]
