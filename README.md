@@ -73,6 +73,9 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ## Release Notes
 
+### 0.5.0 Release
+- Bump Python version to 3.14
+
 ### 0.4.27 Release
 - Dependency Update
 
