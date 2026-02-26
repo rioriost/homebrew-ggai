@@ -73,6 +73,10 @@ After saving the quickaction as 'ggai', you can call it from 'Services...' menu.
 
 ## Release Notes
 
+### 0.5.3 Release
+- Dependency update
+
+
 ### 0.5.2 Release
 - Dependency Update
 
